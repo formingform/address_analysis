@@ -124,6 +124,10 @@ USE `fmis_platon`;
          ('BX','lat1hnclt52759elmdjqvch8e2j5swhps8vkxwemr3'),
          ('BY','lat1chxz48rrp9emzn8julzqdut998p53m2nkxuf9x'),
          ('BZ','lat1qfa49lq8uus5j0652nqdnyp2xdx74l2xt4rj0g'),
+
+         ('BZ','lat1zep3sfvdfukksptc8c8cs5ja82zvg2rzhqdtaq'),
+         ('BZ','lat1ap2p0uw2sp8gqmj6h5fxzgnfnvj36xshg7wav0'),
+
          ('CA','lat1q97lmk0cuxrys437ehanhlxr5fcd2nnqlh46gj'),
          ('CB','lat10xvy2wvg8pnkapvd9zs3yuk87rt0ahdstqk6v9'),
          ('CC','lat1atyajj6n04arpwf2ef43h0awqz8k84j6yej20a'),
@@ -350,6 +354,18 @@ USE `fmis_platon`;
          ('FF','lat1kn08gwj3n384h6h0dmkvgwvvrt9l8jfcxk53hv'),
          ('FF','lat14kp9y9qfmg308uce2k8xggerha0tt9x4wulmq9'),
          ('FF','lat1c4rsa7hc6mhypm4l3fdc7xp87l3gj3fhkckg47'),
+
+
+        ('FF','lat1eawdc3pzp60te5ryp5ku28yhqsyqnj5fzjcz3m'),
+        ('FF','lat17hqdwxsptgcjz9q6sp9mynx7fdrz2ftlpus5fx'),
+        ('FF','lat17u7kszk33090e22vpa92t2wx9enj60gtykrg5g'),
+        ('FF','lat1mm0f0k264vlnun0yu5wf5hy0lpku23202ya74n'),
+        ('FF','lat1v075th2pcwlrkatv2028t99skqzw8t9h73xgte'),
+        ('FF','lat1ekrntun2y9srlly3ked0pwf9wwu7pxnmsrc2f2'),
+        ('FF','lat1d60htmzu6xtzntdssthh63pajm9duks2zs3wkc'),
+        ('FF','lat180e6wvav9nm3utp3eew3rw354f84mqt4ysplyp'),
+        ('FF','lat1wxkua446c7y4vphqa5n6txw32f4hlglkyae9p7'),
+
          ('FG','lat1gjuj2gelwnzhgrmnfww74c72xp7rf3cwhyrm85'),
          ('FG','lat1l38j258p85xekrv8sz8ww52pgh3j75u57wjzqe'),
          ('FG','lat1mq7j42fze8rvu6xxkkhqqfygt4gr3r4hh5eenk'),
