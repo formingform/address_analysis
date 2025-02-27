@@ -1,0 +1,50 @@
+#日志配置
+logging:
+  #日志级别
+  level:
+    root: info
+    org.springframework: info
+    org.example.address_analysis.db: info
+    org.example.address_analysis.AddressAnalysisServiceImpl: debug
+    org.example.address_analysis.AddressAnalysisApplication: debug
+
+  file:
+    name: ./logs/address_analysis.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | %logger{50}[%L] | %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} | %-5level | %thread | trace-id[%X{requestId}] | %logger{50}[%L] | %msg%n"
+  logback:
+    rolling-policy:
+      # 日志文件大小上限，达到该上限后，会自动压缩
+      max-file-size: 200MB
+      # 日志归档的文件名，日志文件达到一定大小之后，自动进行压缩归档
+      file-name-pattern: ./logs/sync-${spring.profiles.active}-%d{yyyy-MM-dd}-%i.log.gz
+      # 日志文件保存的天数
+      max-history: 30
+      # 是否在应用启动时进行归档管理
+      clean-history-on-start: true
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: polardbroot
+    password: ViLYW4Rba8
+    url: jdbc:mysql://al-n9e6z7o3zd1vpbdk4.rwlb.rds.aliyuncs.com:3306/fmis_platon_1401?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false
+    dbcp2:
+      test-while-idle: true
+      validation-query: SELECT 1
+
+mybatis-plus:
+  configuration:
+    call-setters-on-nulls: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+
+analysis:
+  limit: 10000
+  fetch-balance-batch-size: 2000
+  #中心化节点rpc地址
+  web3j: ws://47.241.183.255:7789
+  rec-block: 83051356
+  rec-block-day: 2024/02/21 #必须以 yyyy/MM/dd 格式赋值, 这是 Spring 默认提供的日期转换器格式

@@ -1,0 +1,61 @@
+{
+	"job": {
+		"setting": {
+			"speed": {
+				"channel": 1
+			},
+			"errorLimit": {
+				"record": 0,
+				"percentage": 0.02
+			}
+		},
+		"content": [
+			{
+				"reader": {
+					"name": "mysqlreader",
+					"parameter": {
+						"username": "polardbroot",
+						"password": "n99gZS9DRPVkxQ6U",
+						"splitPk": "id",
+						"connection": [
+							{
+								"querySql": [
+									"SELECT t.block_number, t.tx_hash, t.`tx_from`, t.tx_to, t.value, t.block_timestamp FROM (  SELECT block_number, tx_hash, `tx_from`, tx_to, value, block_timestamp  FROM `tb_tx_ori_voucher`  WHERE `block_number` <= 83051356 AND `tx_type` = '9999' AND `value` > 0 AND `result` = 1  UNION  SELECT `block_number`, '0x00' as `tx_hash`, `restric_contract_addr` as `tx_from`, `restric_addr` as `tx_to`, `release_amount` as `value`, `block_timestamp`  FROM `tb_restrict_release_ori_voucher`  WHERE `block_number` <= 83051356 AND `posting` = 1  UNION  SELECT DISTINCT tx.block_number, tx.tx_hash, tx.`tx_from`, node.beneficiary_address as tx_to, tx.value, tx.block_timestamp  FROM `tb_tx_ori_voucher` tx  INNER JOIN `tb_node` node ON tx.tx_from = node.staking_address  WHERE tx.`block_number` <= 83051356  AND tx.`tx_type` in ('1000', '1001') AND `result` = 1 ) t ORDER BY t.`block_number`;"
+								],
+								"jdbcUrl": [
+									"jdbc:mysql://al-pc-gs5613924bl2h166d.rwlb.singapore.rds.aliyuncs.com:3306/tracking_platon?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false"
+								]
+							}
+						]
+					}
+				},
+				"writer": {
+					"name": "mysqlwriter",
+					"parameter": {
+						"writeMode": "insert",
+						"username": "root",
+						"password": "admin123!",
+						"column": [
+							"block_number",
+							"tx_hash",
+							"tx_from",
+							"tx_to",
+							"value",
+							"block_timestamp"
+						],
+						"session": [],
+						"preSql": [],
+						"connection": [
+							{
+								"jdbcUrl": "jdbc:mysql://192.168.9.157:18000/address_analysis?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&useSSL=false",
+								"table": [
+									"transfer_item"
+								]
+							}
+						]
+					}
+				}
+			}
+		]
+	}
+}
